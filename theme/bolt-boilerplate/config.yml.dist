@@ -7,3 +7,8 @@ apple_status_color: blue
 # Colors For MSapplication Tile
 # must be in double quotes to escape the hash symbol
 msTileColor: "#234f56"
+
+
+#use Google Analytics?
+google_a: false
+ga_id:
