@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="{{ htmllang() }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {# make sure we always display a proper title: The record's title if there is one, appended with the
+  sitename. If there is no title, we append the sitename with the payoff, if there is one.
+  #}
+  <title>
+    {% if record.title is defined %}{{ record.title|striptags }} | {% endif %}
+    {{ app.config.get('general/sitename') }}
+    {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif %}
+  </title>
+
+  {# Touch Icons #}
+  {% block touch_icons %}
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="img/touch-icons/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="{{ theme.apple_status_color }}">
+    <meta name="apple-mobile-web-app-title" content="{{ app.config.get('general/sitename') }}">
+    <link rel="apple-touch-icon-precomposed" href="img/touch-icons/apple-touch-icon-precomposed.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="img/touch-icons/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="{{ theme.msTileColor }}">
+  {% endblock touch_icons %}
+
+  {# Critcal Path CSS meta tags#}
+  {% block enhance_meta %}
+    {#
+    Place Your Calls to CSS, JavaScript and or Fonts here
+    uncomment the ones you will use
+    #}
+    <meta name="fullcss"  content="{{ paths.theme }}css/styles.css">
+    {#<meta name="fulljs"   content="{{ paths.theme }}js/javascript-file-here.js">#}
+    {#<meta name="fonts"    content="{{ paths.theme }}fonts/font-file-here.js">#}
+  {% endblock enhance_meta %}
+
+  {% block header_inline_js  %}
+
+    <script>
+      {% spaceless %}
+      {# Include Enhance JS #}
+      {% include 'js/enhance/enhance.js' %}
+      {% endspaceless %}
+    </script>
+
+  {% endblock header_inline_js %}
+
+  {% block stylesheets %}
+
+    {% if app.request.cookies.has('fullcss') %}
+      <link rel="stylesheet" href="{{ paths.theme }}css/styles.css"/>
+    {% else %}
+      {% block inlined_styles %}
+        {# Individual Inlined Styles Go in Page Template #}
+        {# See index.twig for an example #}
+      {% endblock %}
+    {% endif %}
+    <noscript>
+      <link rel="stylesheet" href="{{ paths.theme }}css/styles.css"/>
+    </noscript>
+
+  {% endblock stylesheets %}
+
+  {% block external_js %}
+
+  {% endblock external_js %}
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a href="#">link 1</a>
+      </li>
+      <li>
+        <a href="#">Link 2</a>
+      </li>
+      <li>
+        <a href="#">Link 3</a>
+      </li>
+      <li>
+        <a href="#">Link 4</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  {% block body %}
+
+  {% endblock body %}
+</main>
+
+<footer>
+  {% block footer %}
+
+  {% endblock footer %}
+</footer>
+
+
+
