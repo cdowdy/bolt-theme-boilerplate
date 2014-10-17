@@ -103,5 +103,12 @@
   {% endblock footer %}
 </footer>
 
+{% block footer_scripts %}
+  {% if theme.google_a %}
+  {% include 'footer/_footer-google-analytics.js.twig' %}
+  {% endif %}
+{% endblock footer_scripts %}
+  </body>
+</html>
 
 
