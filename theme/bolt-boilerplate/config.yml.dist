@@ -1,0 +1,9 @@
+# Touch Icon Syling
+# ==================
+# Colors For apple-mobile-web-app-status-bar-style
+# use a named color: ex: blue
+apple_status_color: blue
+
+# Colors For MSapplication Tile
+# must be in double quotes to escape the hash symbol
+msTileColor: "#234f56"
