@@ -7,6 +7,4 @@ Basic Bolt CMS boilerpate
 * uses gulp 
 * enhance js by The Filament Group  
 
-I'll add more to this when its 'mo ready!  
-
-testing reset folder structure because I keep screwing it up
+I'll add more to this when its 'mo ready!
